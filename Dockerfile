@@ -1,0 +1,17 @@
+FROM node:18-alpine
+
+WORKDIR /app
+
+ENV MYSQL_HOST=192.168.0.2
+ENV MYSQL_PORT=3030
+ENV MYSQL_USERNAME=ROOT
+ENV MYSQL_PASSWORD=
+ENV MYSQL_DBNAME=skyshi_todo
+
+COPY package*.json ./
+
+RUN npm install --silent
+
+COPY . ./
+
+EXPOSE 3030

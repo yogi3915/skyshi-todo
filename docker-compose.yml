@@ -1,0 +1,22 @@
+version: '1.1'
+
+services:
+  app: 
+    container_name: 'app'
+    build: .
+    volumes:
+      - .:app
+      - node_modules:/app/node_modules
+    ports:
+      - 3030:3030
+    stdin_open: true
+    environment:
+      - PORT=3030
+      - MYSQL_HOST=127.0.0.1
+      - MYSQL_PORT=3306
+      - MYSQL_USERNAME=ROOT
+      - MYSQL_PASSWORD=
+      - MYSQL_DBNAME=skyshi_todo
+    command: npm start
+volumes:
+  node_modules:
